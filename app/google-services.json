@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "348768900063",
+    "firebase_url": "https://crudfirebasemomento1.firebaseio.com",
+    "project_id": "crudfirebasemomento1",
+    "storage_bucket": "crudfirebasemomento1.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:348768900063:android:67c25cb455611ac564ea6a",
+        "android_client_info": {
+          "package_name": "com.example.crudfirebasemomento1"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "348768900063-unr0f0u7nfu4ju7l5aq9en866r8hom62.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.crudfirebasemomento1",
+            "certificate_hash": "d133177198ad08f81d7ef0683bf4e4251bb5ea64"
+          }
+        },
+        {
+          "client_id": "348768900063-a0ue7tno0u5liqpj06a0fi22j0otu4b3.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyChjR11sZ8DLaxCqXdGUkiKdTN1X7rZW_Q"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "348768900063-a0ue7tno0u5liqpj06a0fi22j0otu4b3.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
