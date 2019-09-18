@@ -9,7 +9,7 @@
     tools:showIn="@layout/activity_editar">
 
     <LinearLayout
-    android:id="@+id/ll_editar_cedula"
+    android:id="@+id/ll_editar_nino"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginStart="8dp"
@@ -22,25 +22,28 @@
     >
 
     <TextView
-        android:id="@+id/tv_editar_cedula"
+        android:id="@+id/tv_editar_nino"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_weight=".7"
-        android:text="CEDULA"
+        android:text="Nombre del niño"
         android:textSize="20dp" />
-    <EditText
-        android:id="@+id/et_editar_cedula"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_weight=".3"
-        android:ems="10"
-        android:hint="CEDULA"
-        android:inputType="textPersonName" />
 
 
-</LinearLayout>
+        <EditText
+            android:id="@+id/et_editar_nino"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight=".3"
+            android:background="@drawable/redondo"
+            android:ems="10"
+            android:hint="CEDULA"
+            android:inputType="textPersonName" />
+
+
+    </LinearLayout>
     <LinearLayout
-        android:id="@+id/ll_editar_nombre"
+        android:id="@+id/ll_editar_materia"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -49,21 +52,22 @@
         android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/ll_editar_cedula"
+        app:layout_constraintTop_toBottomOf="@id/ll_editar_nino"
         >
 
         <TextView
-            android:id="@+id/tv_editar_nombre"
+            android:id="@+id/tv_editar_materia"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight=".7"
-            android:text="NOMBRE"
+            android:text="Materia"
             android:textSize="20dp" />
         <EditText
-            android:id="@+id/et_editar_nombre"
+            android:id="@+id/et_editar_materia"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight=".3"
+            android:background="@drawable/redondo"
             android:ems="10"
             android:hint="NOMBRE"
             android:inputType="textPersonName" />
@@ -71,7 +75,7 @@
 
     </LinearLayout>
     <LinearLayout
-        android:id="@+id/ll_editar_apellido"
+        android:id="@+id/ll_editar_tarea"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -80,21 +84,86 @@
         android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/ll_editar_nombre"
+        app:layout_constraintTop_toBottomOf="@id/ll_editar_materia"
         >
 
         <TextView
-            android:id="@+id/tv_editar_apellido"
+            android:id="@+id/tv_editar_tarea"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight=".7"
-            android:text="APELLIDO"
+            android:text="Título de la tarea"
             android:textSize="20dp" />
         <EditText
-            android:id="@+id/et_editar_apellido"
+            android:id="@+id/et_editar_tarea"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight=".3"
+            android:background="@drawable/redondo"
+            android:ems="10"
+            android:hint="APELLIDO"
+            android:inputType="textPersonName" />
+
+
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/ll_editar_descrcion"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="25dp"
+        android:layout_marginEnd="8dp"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/ll_editar_tarea"
+        >
+
+        <TextView
+            android:id="@+id/tv_editar_descrcion"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight=".7"
+            android:text="Descripción"
+            android:textSize="20dp" />
+        <EditText
+            android:id="@+id/et_editar_descrcion"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight=".3"
+            android:background="@drawable/redondo"
+            android:ems="10"
+            android:hint="APELLIDO"
+            android:inputType="textPersonName" />
+
+
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/ll_editar_cocente"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="25dp"
+        android:layout_marginEnd="8dp"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/ll_editar_descrcion"
+        >
+
+        <TextView
+            android:id="@+id/tv_editar_cocente"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight=".7"
+            android:text="Nombre docente."
+            android:textSize="20dp" />
+        <EditText
+            android:id="@+id/et_editar_cocente"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight=".3"
+            android:background="@drawable/redondo"
             android:ems="10"
             android:hint="APELLIDO"
             android:inputType="textPersonName" />

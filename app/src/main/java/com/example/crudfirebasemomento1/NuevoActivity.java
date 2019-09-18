@@ -3,7 +3,7 @@ package com.example.crudfirebasemomento1;
 import android.content.Intent;
 import android.os.Bundle;
 
-import com.example.crudfirebasemomento1.models.ClienteModel;
+import com.example.crudfirebasemomento1.models.TareaModel;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -20,14 +20,12 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import java.time.Instant;
-
 public class NuevoActivity extends AppCompatActivity {
 
-    private EditText et_nuevo_cedula,et_nuevo_nombre,et_nuevo_apellido;
+    private EditText et_nuevo_nino,et_nuevo_maretia,et_nuevo_tarea,et_nuevo_descricion,et_nuevo_docente;
     private Button fab_nuevo_guardar2;
     private FloatingActionButton fab_nuevo_guardar;
-    private ClienteModel model;
+    private TareaModel tareaModelmodel;
 
     private final String text_reference = ("clientes");
     private FirebaseDatabase database = FirebaseDatabase.getInstance();
@@ -39,9 +37,15 @@ public class NuevoActivity extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.toolbar_nuevo);
         setSupportActionBar(toolbar);
 
-        et_nuevo_cedula = findViewById(R.id.et_nuevo_cedula);
-        et_nuevo_nombre = findViewById(R.id.et_nuevo_nombre);
-        et_nuevo_apellido = findViewById(R.id.et_nuevo_apellido);
+        et_nuevo_nino = findViewById(R.id.et_nuevo_nino);
+        et_nuevo_maretia = findViewById(R.id.et_nuevo_maretia);
+        et_nuevo_tarea = findViewById(R.id.et_nuevo_tarea);
+        et_nuevo_descricion = findViewById(R.id.et_nuevo_descricion);
+        et_nuevo_docente = findViewById(R.id.et_nuevo_docente);
+
+
+
+
         fab_nuevo_guardar = findViewById(R.id.fab_nuevo_guardar);
         fab_nuevo_guardar2 = findViewById(R.id.fab_nuevo_guardar2);
 
@@ -49,24 +53,26 @@ public class NuevoActivity extends AppCompatActivity {
         fab_nuevo_guardar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(final View view) {
-                String cedula = et_nuevo_cedula.getText().toString();
-                String nombre = et_nuevo_nombre.getText().toString();
-                String apellido = et_nuevo_apellido.getText().toString();
+                String nino = et_nuevo_nino.getText().toString();
+                String materia = et_nuevo_maretia.getText().toString();
+                String tarea = et_nuevo_tarea.getText().toString();
+                String descrcion = et_nuevo_descricion.getText().toString();
+                String cocente = et_nuevo_docente.getText().toString();
 
-            if (!cedula.equals("") && !nombre.equals("") && !apellido.equals("")){
+            if (!nino.equals("") && !materia.equals("") && !tarea.equals("") && !descrcion.equals("") && !cocente.equals("")){
                 String id = reference.push().getKey();
 
                 if (id != null && !id.equals("")) {
-                    model = new ClienteModel(id, cedula, nombre, apellido);
+                    tareaModelmodel = new TareaModel(id, nino, materia, tarea, descrcion, cocente);
 
 
-                    reference.child(id).setValue(model)
+                    reference.child(id).setValue(tareaModelmodel)
                             .addOnSuccessListener(new OnSuccessListener<Void>() {
                                 @Override
                                 public void onSuccess(Void aVoid) {
-                                    if (!model.get_id().equals("") && model.get_id() != null) {
+                                    if (!tareaModelmodel.get_id().equals("") && tareaModelmodel.get_id() != null) {
                                         Intent detalle = new Intent(NuevoActivity.this, DetalleActivity.class);
-                                        detalle.putExtra("id", model.get_id());
+                                        detalle.putExtra("id", tareaModelmodel.get_id());
                                         startActivity(detalle);
                                         finish();
                                     }
@@ -89,18 +95,20 @@ public class NuevoActivity extends AppCompatActivity {
         fab_nuevo_guardar2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(final View view) {
-                String cedula = et_nuevo_cedula.getText().toString();
-            String nombre = et_nuevo_nombre.getText().toString();
-            String apellido = et_nuevo_apellido.getText().toString();
+                String nino = et_nuevo_nino.getText().toString();
+                String materia = et_nuevo_maretia.getText().toString();
+                String tarea = et_nuevo_tarea.getText().toString();
+                String descrcion = et_nuevo_descricion.getText().toString();
+                String cocente = et_nuevo_docente.getText().toString();
 
-                if (!cedula.equals("") && !nombre.equals("") && !apellido.equals("")){
+                if (!nino.equals("") && !materia.equals("") && !tarea.equals("") && !descrcion.equals("") && !cocente.equals("")){
                 String id = reference.push().getKey();
 
                 if (id != null) {
-                    model = new ClienteModel(id, cedula, nombre, apellido);
+                    tareaModelmodel = new TareaModel(id, nino, materia, tarea, descrcion, cocente);
 
 
-                    reference.child(id).setValue(model)
+                    reference.child(id).setValue(tareaModelmodel)
                             .addOnSuccessListener(new OnSuccessListener<Void>() {
                                 @Override
                                 public void onSuccess(Void aVoid) {

@@ -3,7 +3,7 @@ package com.example.crudfirebasemomento1;
 import android.content.Intent;
 import android.os.Bundle;
 
-import com.example.crudfirebasemomento1.models.ClienteModel;
+import com.example.crudfirebasemomento1.models.TareaModel;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -24,9 +24,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 public class DetalleActivity extends AppCompatActivity {
-    private TextView tv_detalle_cedula,tv_detalle_nombre,tv_detalle_apellido;
+    private TextView tv_detalle_nino,tv_detalle_materia,tv_detalle_tarea,tv_detalle_descrcion,tv_detalle_cocente;
     private FloatingActionButton fab_detalle_editar,fab_detalle_eliminar;
-    private ClienteModel model;
+    private TareaModel tareaModelmodel;
 
     private final String text_reference = ("clientes");
     private FirebaseDatabase database = FirebaseDatabase.getInstance();
@@ -41,21 +41,26 @@ public class DetalleActivity extends AppCompatActivity {
 
         fab_detalle_editar = findViewById(R.id.fab_detalle_editar);
         fab_detalle_eliminar = findViewById(R.id.fab_detalle_eliminar);
-        tv_detalle_cedula = findViewById(R.id.tv_detalle_cedula);
-        tv_detalle_nombre = findViewById(R.id.tv_detalle_nombre);
-        tv_detalle_apellido = findViewById(R.id.tv_detalle_apellido);
-        model = new ClienteModel();
+        tv_detalle_nino = findViewById(R.id.tv_detalle_nino);
+        tv_detalle_materia = findViewById(R.id.tv_detalle_materia);
+        tv_detalle_tarea = findViewById(R.id.tv_detalle_tarea);
+        tv_detalle_descrcion = findViewById(R.id.tv_detalle_descrcion);
+        tv_detalle_cocente = findViewById(R.id.tv_detalle_cocente);
+
+        tareaModelmodel = new TareaModel();
 
         String id = getIntent().getStringExtra("id");
         if (id != null && !id.equals("")){
             reference.child(id).addValueEventListener(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                    model = dataSnapshot.getValue(ClienteModel.class);
-                    if (model != null){
-                        tv_detalle_cedula.setText(model.get_cedula());
-                        tv_detalle_nombre.setText(model.get_nombre());
-                        tv_detalle_apellido.setText(model.get_apellido());
+                    tareaModelmodel = dataSnapshot.getValue(TareaModel.class);
+                    if (tareaModelmodel != null){
+                        tv_detalle_nino.setText(tareaModelmodel.getNino());
+                        tv_detalle_materia.setText(tareaModelmodel.getMateria());
+                        tv_detalle_tarea.setText(tareaModelmodel.getTarea());
+                        tv_detalle_descrcion.setText(tareaModelmodel.getDescrcion());
+                        tv_detalle_cocente.setText(tareaModelmodel.getCocente());
                     }
                 }
 
@@ -70,10 +75,10 @@ public class DetalleActivity extends AppCompatActivity {
         fab_detalle_editar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (model != null) {
-                    if (model.get_id() != null && !model.get_id().equals("")) {
+                if (tareaModelmodel != null) {
+                    if (tareaModelmodel.get_id() != null && !tareaModelmodel.get_id().equals("")) {
                         Intent editar = new Intent(DetalleActivity.this, EditarActivity.class);
-                        editar.putExtra("id", model.get_id());
+                        editar.putExtra("id", tareaModelmodel.get_id());
                         startActivity(editar);
                     }
                 }
@@ -87,15 +92,15 @@ public class DetalleActivity extends AppCompatActivity {
                 snackbar.setAction("Estoy Seguro!", new View.OnClickListener() {
                     @Override
                     public void onClick(final View view) {
-                        if (model != null) {
-                            reference.child(model.get_id()).removeValue()
+                        if (tareaModelmodel != null) {
+                            reference.child(tareaModelmodel.get_id()).removeValue()
                                     .addOnSuccessListener(new OnSuccessListener<Void>() {
                                         @Override
                                         public void onSuccess(Void aVoid) {
                                                 Intent inicio = new Intent(DetalleActivity.this, MainActivity.class);
                                                 startActivity(inicio);
                                                 finish();
-                                            
+
                                         }
                                     })
                                     .addOnFailureListener(new OnFailureListener() {

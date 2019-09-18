@@ -3,7 +3,7 @@ package com.example.crudfirebasemomento1;
 import android.content.Intent;
 import android.os.Bundle;
 
-import com.example.crudfirebasemomento1.models.ClienteModel;
+import com.example.crudfirebasemomento1.models.TareaModel;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -23,9 +23,9 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 public class EditarActivity extends AppCompatActivity {
-    private EditText et_editar_cedula,et_editar_nombre,et_editar_apellido;
+    private EditText et_editar_nino,et_editar_materia,et_editar_tarea,et_editar_descrcion,et_editar_cocente;
     private FloatingActionButton fab_editar_guardar;
-    private ClienteModel model;
+    private TareaModel tareaModelmodel;
 
     private final String text_reference = ("clientes");
     private FirebaseDatabase database = FirebaseDatabase.getInstance();
@@ -37,22 +37,28 @@ public class EditarActivity extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.toolbar_editar);
         setSupportActionBar(toolbar);
 
-        et_editar_cedula = findViewById(R.id.et_editar_cedula);
-        et_editar_nombre = findViewById(R.id.et_editar_nombre);
-        et_editar_apellido = findViewById(R.id.et_editar_apellido);
+        et_editar_nino = findViewById(R.id.et_editar_nino);
+        et_editar_materia = findViewById(R.id.et_editar_materia);
+        et_editar_tarea = findViewById(R.id.et_editar_tarea);
+        et_editar_descrcion = findViewById(R.id.et_editar_descrcion);
+        et_editar_cocente = findViewById(R.id.et_editar_cocente);
+
+
         fab_editar_guardar = findViewById(R.id.fab_editar_guardar);
-        model = new ClienteModel();
+        tareaModelmodel = new TareaModel();
 
         String id = getIntent().getStringExtra("id");
         if (id != null && !id.equals("")){
             reference.child(id).addValueEventListener(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                    model = dataSnapshot.getValue(ClienteModel.class);
-                    if (model != null){
-                        et_editar_cedula.setText(model.get_cedula());
-                        et_editar_nombre.setText(model.get_nombre());
-                        et_editar_apellido.setText(model.get_apellido());
+                    tareaModelmodel = dataSnapshot.getValue(TareaModel.class);
+                    if (tareaModelmodel != null){
+                        et_editar_nino.setText(tareaModelmodel.getNino());
+                        et_editar_materia.setText(tareaModelmodel.getMateria());
+                        et_editar_tarea.setText(tareaModelmodel.getTarea());
+                        et_editar_descrcion.setText(tareaModelmodel.getDescrcion());
+                        et_editar_cocente.setText(tareaModelmodel.getCocente());
                     }
                 }
 
@@ -66,26 +72,30 @@ public class EditarActivity extends AppCompatActivity {
         fab_editar_guardar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick( final View view) {
-                String cedula = et_editar_cedula.getText().toString();
-                String nombre = et_editar_nombre.getText().toString();
-                String apellido = et_editar_apellido.getText().toString();
+                String nino = et_editar_nino.getText().toString();
+                String materia = et_editar_materia.getText().toString();
+                String tarea = et_editar_tarea.getText().toString();
+                String descrcion = et_editar_descrcion.getText().toString();
+                String cocente = et_editar_cocente.getText().toString();
 
-                if (!cedula.equals("") && !nombre.equals("") && !apellido.equals("")) {
-                    if (model != null) {
-                    String id = model.get_id();
+                if (!nino.equals("") && !materia.equals("") && !tarea.equals("") && !descrcion.equals("") && !cocente.equals("")){
+                    if (tareaModelmodel != null) {
+                    String id = tareaModelmodel.get_id();
 
                     if (id != null && !id.equals("")) {
-                        model.set_cedula(cedula);
-                        model.set_nombre(nombre);
-                        model.set_apellido(apellido);
+                        tareaModelmodel.setNino(nino);
+                        tareaModelmodel.setMateria(materia);
+                        tareaModelmodel.setTarea(tarea);
+                        tareaModelmodel.setDescrcion(descrcion);
+                        tareaModelmodel.setCocente(cocente);
 
-                        reference.child(id).setValue(model)
+                        reference.child(id).setValue(tareaModelmodel)
                                 .addOnSuccessListener(new OnSuccessListener<Void>() {
                                     @Override
                                     public void onSuccess(Void aVoid) {
-                                        if (!model.get_id().equals("") && model.get_id() != null) {
+                                        if (!tareaModelmodel.get_id().equals("") && tareaModelmodel.get_id() != null) {
                                             Intent detalle = new Intent(EditarActivity.this, MainActivity.class);
-                                            detalle.putExtra("id", model.get_id());
+                                            detalle.putExtra("id", tareaModelmodel.get_id());
                                             startActivity(detalle);
                                             finish();
                                         }

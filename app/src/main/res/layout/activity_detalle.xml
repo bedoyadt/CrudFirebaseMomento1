@@ -26,7 +26,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|start"
         android:layout_margin="@dimen/fab_margin"
-        app:srcCompat="@drawable/ic_24px_2"
+        app:srcCompat="@drawable/ic_documentos"
         app:maxImageSize="35dp"
         tools:ignore="VectorDrawableCompat" />
     <com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -35,7 +35,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|end"
         android:layout_margin="@dimen/fab_margin"
-        app:srcCompat="@drawable/ic_24px"
+        app:srcCompat="@drawable/ic_borrar"
         app:maxImageSize="35dp"
         tools:ignore="VectorDrawableCompat" />
     <include layout="@layout/content_detalle" />

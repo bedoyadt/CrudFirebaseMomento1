@@ -1,5 +1,6 @@
 package com.example.crudfirebasemomento1.adapters;
 
+
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -8,17 +9,16 @@ import android.widget.BaseAdapter;
 import android.widget.TextView;
 
 import com.example.crudfirebasemomento1.R;
-import com.example.crudfirebasemomento1.models.ClienteModel;
+import com.example.crudfirebasemomento1.models.TareaModel;
 
 import java.util.ArrayList;
 
-public class ContactoAdapter extends BaseAdapter {
-
+public class TareaAdater extends BaseAdapter {
     private final Context context;
-    private ClienteModel model;
-    private ArrayList<ClienteModel> list;
+    private TareaModel model;
+    private ArrayList<TareaModel> list;
 
-    public ContactoAdapter(Context context, ArrayList<ClienteModel> list) {
+    public TareaAdater(Context context, ArrayList<TareaModel> list) {
         this.context = context;
         this.list = list;
     }
@@ -48,7 +48,7 @@ public class ContactoAdapter extends BaseAdapter {
         }
         TextView tv_iten_contacto = itemView.findViewById(R.id.tv_iten_contacto);
         model = list.get(i);
-        tv_iten_contacto.setText(model.get_nombre());
+        tv_iten_contacto.setText(model.getNino());
 
         return itemView;
     }
