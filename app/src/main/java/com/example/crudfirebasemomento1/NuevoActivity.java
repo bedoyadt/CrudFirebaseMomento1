@@ -42,10 +42,6 @@ public class NuevoActivity extends AppCompatActivity {
         et_nuevo_tarea = findViewById(R.id.et_nuevo_tarea);
         et_nuevo_descricion = findViewById(R.id.et_nuevo_descricion);
         et_nuevo_docente = findViewById(R.id.et_nuevo_docente);
-
-
-
-
         fab_nuevo_guardar = findViewById(R.id.fab_nuevo_guardar);
         fab_nuevo_guardar2 = findViewById(R.id.fab_nuevo_guardar2);
 
