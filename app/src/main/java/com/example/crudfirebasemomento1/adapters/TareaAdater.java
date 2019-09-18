@@ -15,7 +15,7 @@ import java.util.ArrayList;
 
 public class TareaAdater extends BaseAdapter {
     private final Context context;
-    private TareaModel model;
+    private TareaModel tareaModelmodel;
     private ArrayList<TareaModel> list;
 
     public TareaAdater(Context context, ArrayList<TareaModel> list) {
@@ -47,8 +47,8 @@ public class TareaAdater extends BaseAdapter {
             itemView = inflater.inflate(R.layout.item_contacto, viewGroup, false);
         }
         TextView tv_iten_contacto = itemView.findViewById(R.id.tv_iten_contacto);
-        model = list.get(i);
-        tv_iten_contacto.setText(model.getNino());
+        tareaModelmodel = list.get(i);
+        tv_iten_contacto.setText(tareaModelmodel.getNino());
 
         return itemView;
     }
